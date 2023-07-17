@@ -28,53 +28,52 @@ You will need to re-config your `ssl_certificate` and `ssl_certificate_key` to y
    
 
    ```upstream odoo {
-server 127.0.0.1:8069;
-}
-
-server {
-    if ($host = td.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-listen 80;
-server_name td.com;
-return 301 https://$host$request_uri;
-
-
-}
-
-server {
-listen 443 ssl;
-server_name td.com;
-
-
-access_log /var/log/nginx/odoo.access.log;
-error_log /var/log/nginx/odoo.error.log;
-    ssl_certificate /etc/letsencrypt/live/td.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/td.com/privkey.pem; # managed by Certbot
-
-
-location / {
-    proxy_set_header X-Forwarded-Host $host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Real-IP $remote_addr;
-
-    proxy_redirect off;
-    proxy_pass http://odoo;
-}
-
-location ~* /web/static/ {
-    proxy_cache_valid 200 90m;
-    proxy_buffering on;
-    expires 864000;
-    proxy_pass http://odoo;
-}
-
-gzip_types text/css text/less text/plain text/xml application/xml application/json application/javascript;
-gzip on; ```
-
+  server 127.0.0.1:8069;
+  }
+  
+  server {
+      if ($host = td.com) {
+          return 301 https://$host$request_uri;
+      } # managed by Certbot
+  
+  
+  listen 80;
+  server_name td.com;
+  return 301 https://$host$request_uri;
+  
+  
+  }
+  
+  server {
+  listen 443 ssl;
+  server_name td.com;
+  
+  
+  access_log /var/log/nginx/odoo.access.log;
+  error_log /var/log/nginx/odoo.error.log;
+      ssl_certificate /etc/letsencrypt/live/td.com/fullchain.pem; # managed by Certbot
+      ssl_certificate_key /etc/letsencrypt/live/td.com/privkey.pem; # managed by Certbot
+  
+  
+  location / {
+      proxy_set_header X-Forwarded-Host $host;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+      proxy_set_header X-Real-IP $remote_addr;
+  
+      proxy_redirect off;
+      proxy_pass http://odoo;
+  }
+  
+  location ~* /web/static/ {
+      proxy_cache_valid 200 90m;
+      proxy_buffering on;
+      expires 864000;
+      proxy_pass http://odoo;
+  }
+  
+  gzip_types text/css text/less text/plain text/xml application/xml application/json application/javascript;
+  gzip on; ```
 
 Then `Ctrl + X` -> `Y` -> `Enter` for save and run this to check the syntax of configuration file: `sudo nginx -t`
 
