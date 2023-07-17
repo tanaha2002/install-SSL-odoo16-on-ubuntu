@@ -20,9 +20,11 @@
    
    Then create a configuration for your domain
    
-   You will need to re-config your `ssl_certificate` and `ssl_certificate_key` to your `certificate path` and `private key path`.
+   
 
    `sudo nano /etc/nginx/sites-available/odoo.conf`
+
+You will need to re-config your `ssl_certificate` and `ssl_certificate_key` to your `certificate path` and `private key path`.
    
 
    ```upstream odoo {
@@ -72,6 +74,7 @@ location ~* /web/static/ {
 
 gzip_types text/css text/less text/plain text/xml application/xml application/json application/javascript;
 gzip on; ```
+
 
 Then `Ctrl + X` -> `Y` -> `Enter` for save and run this to check the syntax of configuration file: `sudo nginx -t`
 
