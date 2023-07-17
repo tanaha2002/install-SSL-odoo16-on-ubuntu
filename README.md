@@ -1,5 +1,6 @@
 # install-SSL-odoo16-on-ubuntu (EC2 ubuntu instance)
-
+## prerequisite
+  Make sure you already open port `80` and `443` for your ubuntu instance
 ## 1. First we need install Certbot:
   `sudo apt update`
   
