@@ -73,7 +73,8 @@ You will need to re-config your `ssl_certificate` and `ssl_certificate_key` to y
   }
   
   gzip_types text/css text/less text/plain text/xml application/xml application/json application/javascript;
-  gzip on; ```
+  gzip on;
+```
 
 
 Then `Ctrl + X` -> `Y` -> `Enter` for save and run this to check the syntax of configuration file: `sudo nginx -t`
