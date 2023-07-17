@@ -20,7 +20,7 @@
    
    Then create a configuration for your domain
    
-   You will need to re-config your `certificate path` and `private key path` if it from different path.
+   You will need to re-config your `ssl_certificate` and `ssl_certificate_key` to your `certificate path` and `private key path`.
 
    `sudo nano /etc/nginx/sites-available/odoo.conf`
    
