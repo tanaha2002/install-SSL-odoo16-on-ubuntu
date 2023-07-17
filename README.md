@@ -20,10 +20,10 @@
    
    Then create a configuration for your domain
    
-   
+   You will need to re-config your `certificate path` and `private key path` if it from different path.
+
    `sudo nano /etc/nginx/sites-available/odoo.conf`
    
-    You will need to re-config your `certificate path` and `private key path` if it from different path.
 
    ```upstream odoo {
 server 127.0.0.1:8069;
