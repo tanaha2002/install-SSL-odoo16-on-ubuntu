@@ -4,6 +4,7 @@
   `sudo apt update`
   
   `sudo apt install certbot`
+  
   Then run command below to create a configuration SSL certificate for your server, example is `td.com:8069` is my odoo domain 
 
   `sudo certbot certonly --standalone -d td.com`
@@ -11,6 +12,7 @@
   After done this task let check your certificate path and private key path using
   
   `sudo certbot certificates`
+  
   Take note for your certificate path and private key path for configuration nginx later.
   
 ## 2. Install nginx and configuration for odoo:
@@ -19,7 +21,7 @@
    Then create a configuration for your domain:
    
    
-   `sudo nano /etc/nginx/sites-available/odoo.con`
+   `sudo nano /etc/nginx/sites-available/odoo.conf`
 
    ```upstream odoo {
 server 127.0.0.1:8069;
