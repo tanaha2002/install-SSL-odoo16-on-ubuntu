@@ -1,15 +1,15 @@
 server {
     listen 80;
-    server_name awsport.pro;
+    server_name aaaaaaa.com;
     return 301 https://$host$request_uri; # Chuyển hướng về HTTPS
 }
 
 server {
     listen 443 ssl;
-    server_name awsport.pro;
+    server_name aaaaa.com;
 
-    ssl_certificate /etc/letsencrypt/live/awsport.pro/fullchain.pem; # Đường dẫn tới chứng chỉ fullchain.pem
-    ssl_certificate_key /etc/letsencrypt/live/awsport.pro/privkey.pem; # Đường dẫn tới khóa riêng tư privkey.pem
+    ssl_certificate /etc/letsencrypt/live/aaaaa.com/fullchain.pem; # Đường dẫn tới chứng chỉ fullchain.pem
+    ssl_certificate_key /etc/letsencrypt/live/aaaaa.com/privkey.pem; # Đường dẫn tới khóa riêng tư privkey.pem
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
