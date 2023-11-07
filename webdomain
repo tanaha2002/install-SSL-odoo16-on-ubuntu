@@ -1,0 +1,24 @@
+server {
+    listen 80;
+    server_name awsport.pro;
+    return 301 https://$host$request_uri; # Chuyển hướng về HTTPS
+}
+
+server {
+    listen 443 ssl;
+    server_name awsport.pro;
+
+    ssl_certificate /etc/letsencrypt/live/awsport.pro/fullchain.pem; # Đường dẫn tới chứng chỉ fullchain.pem
+    ssl_certificate_key /etc/letsencrypt/live/awsport.pro/privkey.pem; # Đường dẫn tới khóa riêng tư privkey.pem
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_pass http://localhost:3000; # Chuyển hướng đến cổng 3000
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
