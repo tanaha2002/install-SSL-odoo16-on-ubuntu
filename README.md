@@ -79,6 +79,9 @@ You will need to re-config your `ssl_certificate` and `ssl_certificate_key` to y
 
 
 Then `Ctrl + X` -> `Y` -> `Enter` for save and run this to check the syntax of configuration file: `sudo nginx -t`
+Then use this command to create symlink
+`sudo ln -s /etc/nginx/sites-available/td.conf /etc/nginx/sites-enabled/`
+
 
 If it ok then let restart the nginx for apply the configuration:
 `sudo systemctl restart nginx`
