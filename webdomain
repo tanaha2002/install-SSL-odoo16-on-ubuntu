@@ -22,3 +22,25 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
+
+
+## IF YOU WANT MAKE A STATIC RESOUCE HAVE HTTPS, USE THIS CONFIG BELOW ##
+
+server {
+    listen 80;
+    listen 443 ssl; 
+    server_name ABC.pro;
+
+    root /var/www/html; #ROOT PATH OF RESOURCE
+
+    ssl_certificate /etc/letsencrypt/live/ABC.pro/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/ABC.pro/privkey.pem;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /images/ {
+        alias /var/www/html/images/; #THIS PATH IS TO YOUR RESOURCE
+    }
+}
