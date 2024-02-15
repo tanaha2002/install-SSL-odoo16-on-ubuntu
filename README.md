@@ -89,13 +89,13 @@ If it ok then let restart the nginx for apply the configuration:
 
 # Renew the Certbot if it expire automatic (EC2 ubuntu instance)
 ## Maunal:
-1. `sudo systemctl stop nginx``
+1. `sudo systemctl stop nginx`
 2. `sudo certbot renew`
-3. sudo systemctl restart nginx`
+3. `sudo systemctl restart nginx`
 
 ## Automation
 1. `sudo systemctl stop nginx`
 2. `sudo crontab -e`
 3. `0 */12 * * * root test -x /usr/bin/certbot -a ! -d /run/systemd/system && perl -e 'sleep int(rand(3600))' && certbot -q renew`
 
-It will check and renew the certbot after 2 days.
+It will check and renew the certbot each 12 hours.
